@@ -2,8 +2,14 @@ const express = require('express');
 const path = require('path');
 const routes = require('./routes');
 
+// import the configurations
+const configs = require('./config');
+
 // create the new server
 const app = express();
+
+// filter the current environment
+const config = configs[app.get('env')];
 
 // enable Pug
 app.set('view engine', 'pug');
@@ -21,6 +27,9 @@ app.use((req, res, next) => {
     // console.log(res.locals);
     return next();
 });
+
+// pass the sitename to the views
+app.locals.sitetitle = config.sitename;
 
 // listen for the home page
 app.use('/', routes() );
