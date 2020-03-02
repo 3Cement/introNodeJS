@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+// import the models
+const Travels = require('../models/Travels');
+
 module.exports = function() {
     // homepage url
     router.get('/', (req, res) => {
@@ -14,6 +17,15 @@ module.exports = function() {
         res.render('about', {
             pageTitle: 'About Us'
         });
+    });
+
+    router.get('/travels', (req, res) => {
+
+        Travels.findAll()
+            .then(travels => res.render('travels', {
+                pageTitle: 'Upcoming Travels',
+                travels
+            }));
     });
 
     return router;

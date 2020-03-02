@@ -20,7 +20,7 @@ const Travels = db.define('travels', {
     description: {
         type: Sequelize.STRING
     },
-    avaliable: {
+    available: {
         type: Sequelize.STRING
     },
 });
