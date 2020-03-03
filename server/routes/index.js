@@ -35,5 +35,11 @@ module.exports = function() {
             }))
     });
 
+    router.get('/testimonials', (req, res) => {
+        res.render('testimonials', {
+            pageTitle: 'Testimonials'
+        });
+    });
+
     return router;
 }
