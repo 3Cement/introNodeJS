@@ -7,3 +7,13 @@ block content
                 img.img-fluid(src=`/img/destiny_${travel.image}_ln.jpg`, alt="About Image")
             .col-md-7
                 h1=travel.title
+                p
+                    i.fas.fa-calendar-alt
+                    | Departure Date: #{travel.departure_date} - #{travel.return_date}
+                p
+                    i.fas.fa-dollar-sign
+                    | #{travel.price}
+                p
+                    i.fas.fa-users
+                    | #{travel.available} Available Seats
+                p=travel.description
