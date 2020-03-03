@@ -28,5 +28,12 @@ module.exports = function() {
             }));
     });
 
+    router.get('/travels/:id', (req, res) => {
+        Travels.findByPk(req.params.id)
+            .then(travel => res.render('travel', {
+                travel
+            }))
+    });
+
     return router;
 }
