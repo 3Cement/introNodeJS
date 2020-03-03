@@ -40,6 +40,18 @@ module.exports = function() {
             pageTitle: 'Testimonials'
         });
     });
+    // handles form submission with POST
+    router.post('/testimonials', (req, res) => {
+        let {name, email, message} = req.body;
+
+        // validate the form
+
+
+        // check if there're some errors
+
+
+        // save to the database
+    });
 
     return router;
 }
