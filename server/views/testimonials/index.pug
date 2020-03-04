@@ -7,15 +7,16 @@ block content
                 h1.text-center #{pageTitle}
                 blockquote.text-center Read the Experiences from Our Clients
                 .row.testimonials
-                    each testimonial in testimonials
-                        .col-md-6.col-lg-4
-                            .card
-                                .card-body
-                                    blockquote.blockquote
-                                        p.mb-0
-                                            | #{testimonial.message}
-                                    footer.blockquote-footer
-                                        | #{testimonial.name}
+                    if(testimonials)
+                        each testimonial in testimonials
+                            .col-md-6.col-lg-4
+                                .card
+                                    .card-body
+                                        blockquote.blockquote
+                                            p.mb-0
+                                                | #{testimonial.message}
+                                        footer.blockquote-footer
+                                            | #{testimonial.name}
             
             .col-md-12
                 h2.text-center Add a Testimonial

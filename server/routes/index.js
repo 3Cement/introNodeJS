@@ -66,13 +66,16 @@ module.exports = function() {
         // check if there're some errors
         if(errors.length > 0) {
             // we have some errors, display the warning to the view
-            res.render('testimonials', {
+
+            Testimonials.findAll()
+            .then(testimonials => res.render('testimonials', {
                 pageTitle: 'Testimonials',
                 errors ,
                 name,
                 email,
-                message
-            });
+                message,
+                testimonials
+            }));
         } else {
             // save to the database
             Testimonials.create({
