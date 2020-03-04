@@ -7,3 +7,10 @@ exports.displayTravels =  (req, res) => {
             travels
         }));
 }
+
+exports.displayTravel = (req, res) => {
+    Travels.findByPk(req.params.id)
+        .then(travel => res.render('travel', {
+            travel
+        }))
+}
