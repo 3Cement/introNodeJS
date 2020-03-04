@@ -5,6 +5,10 @@ const router = express.Router();
 const Travels = require('../models/Travels');
 const Testimonials = require('../models/Testimonials');
 
+// import the controllers
+const aboutController = require('../controllers/aboutController');
+const travelController = require('../controllers/travelController')
+
 module.exports = function() {
     // homepage url
     router.get('/', (req, res) => {
@@ -27,20 +31,8 @@ module.exports = function() {
     });
 
     // about us
-    router.get('/about', (req, res) => {
-        res.render('about', {
-            pageTitle: 'About Us'
-        });
-    });
-
-    router.get('/travels', (req, res) => {
-
-        Travels.findAll()
-            .then(travels => res.render('travels', {
-                pageTitle: 'Upcoming Travels',
-                travels
-            }));
-    });
+    router.get('/about', aboutController.aboutInformation)
+    router.get('/travels', travelController.displayTravels);
 
     router.get('/travels/:id', (req, res) => {
         Travels.findByPk(req.params.id)
