@@ -1,16 +1,16 @@
 const Travels = require('../models/Travels');
 
-exports.displayTravels =  (req, res) => {
-    Travels.findAll()
-        .then(travels => res.render('travels', {
-            pageTitle: 'Upcoming Travels',
-            travels
-        }));
+exports.displayTravels = async (req, res) => {
+    const travels = await Travels.findAll();
+    res.render('travels', {
+        pageTitle: 'Upcoming Travels',
+        travels
+    })
 }
 
-exports.displayTravel = (req, res) => {
-    Travels.findByPk(req.params.id)
-        .then(travel => res.render('travel', {
-            travel
-        }))
+exports.displayTravel = async (req, res) => {
+    const travel = await Travels.findByPk(req.params.id)
+    res.render('travel', {
+        travel
+    })
 }

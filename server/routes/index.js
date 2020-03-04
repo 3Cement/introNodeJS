@@ -13,7 +13,6 @@ module.exports = function() {
     router.get('/travels', travelController.displayTravels);
     router.get('/travels/:id', travelController.displayTravel);
     router.get('/testimonials', testimonialController.displayTestimonials);
-    // handles form submission with POST
     router.post('/testimonials', testimonialController.addTestimonial);
 
     return router;

@@ -9,13 +9,12 @@ exports.homeInformation = (req, res) => {
     promises.push( Testimonials.findAll({limit: 3}) )
 
     // pass to the promise
-    const result = Promise.all(promises);
+    const [travels, testimonials] = Promise.all(promises);
 
-    result.then(result => res.render('index', {
+    result.then('index', {
         pageTitle : 'Home',
         className: 'home',
-        travels : result[0],
-        testimonials: result[1]
-    }))
-    .catch(err => console.log(err));
+        travels,
+        testimonials
+    })
 }
