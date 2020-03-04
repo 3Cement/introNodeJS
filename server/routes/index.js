@@ -3,6 +3,7 @@ const router = express.Router();
 
 // import the models
 const Travels = require('../models/Travels');
+const Testimonials = require('../models/Testimonials');
 
 module.exports = function() {
     // homepage url
@@ -72,6 +73,13 @@ module.exports = function() {
             });
         } else {
             // save to the database
+            Testimonials.create({
+                name,
+                email,
+                message
+            })
+            .then(() => res.redirect('/testimonials'))
+            .catch(error => console.log(error))
         }
 
 
